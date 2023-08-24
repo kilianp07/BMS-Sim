@@ -1,0 +1,40 @@
+---
+repos:
+    - repo: https://github.com/psf/black
+      rev: 23.7.0
+      hooks:
+          - id: black
+            args: [--config=pyproject.toml]
+    - repo: https://github.com/hadialqattan/pycln
+      rev: v2.2.2
+      hooks:
+          - id: pycln
+            args: [--config=pyproject.toml]
+    - repo: https://github.com/pre-commit/mirrors-mypy
+      rev: v1.5.1
+      hooks:
+          - id: mypy
+    - repo: https://github.com/pycqa/isort
+      rev: 5.12.0
+      hooks:
+          - id: isort
+            files: \.(py)$
+            args: [--settings-path=pyproject.toml]
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.0.1
+      hooks:
+          - id: requirements-txt-fixer
+
+    - repo: local
+      hooks:
+          - id: generate-requirements
+            name: Generate requirements.txt
+            entry: .pre-commit-hooks/generate-requirements.sh
+            language: system
+
+    - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+      rev: 0.2.1    # or other specific tag
+      hooks:
+          - id: yamlfmt
+
+
