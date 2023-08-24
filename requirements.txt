@@ -1,0 +1,2 @@
+pybamm==23.5
+pymodbus==3.4.1
